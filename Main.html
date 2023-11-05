@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화장품 주문 제작</title>
+</head>
+
+<body>
+<h1>화장품 주문 제작</h1>
+
+<label for="cosmetic-type">화장품 종류 선택:</label>
+<select id="cosmetic-type">
+    <option value="skin">피부</option>
+    <option value="lip">립</option>
+    <option value="blusher">블러셔</option>
+    <option value="eyebrow">아이브로우</option>
+    <option value="eyeliner">아이라이너</option>
+</select>
+
+<button id="select-button">선택</button>
+
+<div id="skin-options" style="display: none;">
+    <h2>피부 종류 선택:</h2>
+    <label for="color">색깔:</label>
+    <select id="color">
+        <option value="pink">핑크</option>
+        <option value="neutral">뉴트럴</option>
+        <option value="yellow">옐로우</option>
+    </select>
+
+    <label for="brightness">명도:</label>
+    <select id="brightness">
+        <option value="13">13</option>
+        <option value="17">17</option>
+        <option value="19">19</option>
+        <option value="21">21</option>
+        <option value="23">23</option>
+    </select>
+
+    <label for="texture">텍스처:</label>
+    <select id="texture">
+        <option value="matte">매트</option>
+        <option value="semi-matte">세미 매트</option>
+        <option value="glow">글로우</option>
+    </select>
+    <button id="skin-select-button">선택 완료</button>
+</div>
+
+<div id="lip-options" style="display: none;">
+    <h2>립 종류 선택:</h2>
+    <label for="lip-color">색깔:</label>
+    <select id="lip-color">
+        <option value="pink">핑크</option>
+        <option value="red">레드</option>
+        <option value="orange">오렌지</option>
+        <option value="coral">코랄</option>
+    </select>
+
+    <label for="lip-texture">텍스처:</label>
+    <select id="lip-texture">
+        <option value="glow">글로우</option>
+        <option value="matte">매트</option>
+    </select>
+
+    <label for="pigmentation">착색력:</label>
+    <select id="pigmentation">
+        <option value="strong">강</option>
+        <option value="medium">중</option>
+        <option value="weak">약</option>
+    </select>
+
+    <label for="spreadability">발림성:</label>
+    <select id="spreadability">
+        <option value="watery">워터리</option>
+        <option value="oily">오일리</option>
+        <option value="solid">고체형</option>
+    </select>
+    <button id="lip-select-button">선택 완료</button>
+</div>
+
+<div id="blusher-options" style="display: none;">
+    <h2>블러셔 종류 선택:</h2>
+    <label for="blusher-color">색깔:</label>
+    <select id="blusher-color">
+        <option value="pink">핑크</option>
+        <option value="coral">코랄</option>
+        <option value="orange">오랜지</option>
+        <option value="lavender">라벤더</option>
+        <option value="red">레드</option>
+    </select>
+
+    <label for="blusher-texture">텍스처:</label>
+    <select id="blusher-texture">
+        <option value="solid">고체형</option>
+        <option value="liquid">액체형</option>
+        <option value="powder">가루형</option>
+    </select>
+    <button id="blusher-select-button">선택 완료</button>
+</div>
+
+<div id="eyebrow-options" style="display: none;">
+    <h2>아이브로우 종류 선택:</h2>
+    <label for="eyebrow-color">색깔:</label>
+    <select id="eyebrow-color">
+        <option value="black">블랙</option>
+        <option value="ash">애쉬</option>
+        <option value="chocolate-brown">초코브라운</option>
+        <option value="dark-brown">다크브라운</option>
+        <option value="light-brown">라이트 브라운</option>
+        <option value="blonde">블론드</option>
+    </select>
+
+    <label for="eyebrow-tool">툴:</label>
+    <select id="eyebrow-tool">
+        <option value="stick">스틱</option>
+        <option value="screw-brow">스크류 브로우</option>
+    </select>
+    <button id="eyebrow-select-button">선택 완료</button>
+</div>
+
+<div id="eyeliner-options" style="display: none;">
+    <h2>아이라이너 종류 선택:</h2>
+    <label for="eyeliner-color">색깔:</label>
+    <select id="eyeliner-color">
+        <option value="black">블랙</option>
+        <option value="dark-brown">다크 브라운</option>
+        <option value="chocolate-brown">초코 브라운</option>
+        <option value="light-brown">라이트 브라운</option>
+    </select>
+
+    <label for="eyeliner-tool">툴:</label>
+    <select id="eyeliner-tool">
+        <option value="pencil">펜슬</option>
+        <option value="brush-pen">붓펜</option>
+        <option value="gel">젤</option>
+    </select>
+    <button id="eyeliner-select-button">선택 완료</button>
+</div>
+
+<script>
+    const cosmeticTypeDropdown = document.getElementById("cosmetic-type");
+    const selectButton = document.getElementById("select-button");
+    const skinOptionsDiv = document.getElementById("skin-options")
+    const skinSelectButton = document.getElementById("skin-select-button");;
+    const lipOptionsDiv = document.getElementById("lip-options");
+    const lipSelectButton = document.getElementById("lip-select-button");
+    const blusherOptionsDiv = document.getElementById("blusher-options");
+    const blusherSelectButton = document.getElementById("blusher-select-button");
+    const eyebrowOptionsDiv = document.getElementById("eyebrow-options");
+    const eyebrowSelectButton = document.getElementById("eyebrow-select-button");
+    const eyelinerOptionsDiv = document.getElementById("eyeliner-options");
+    const eyelinerSelectButton = document.getElementById("eyeliner-select-button");
+    const selectedDetailsDiv = document.getElementById("selected-details");
+    const detailsList = document.getElementById("details-list");
+
+    selectButton.addEventListener("click", function () {
+        if (cosmeticTypeDropdown.value === "skin") {
+            skinOptionsDiv.style.display = "block";
+            lipOptionsDiv.style.display = "none";
+            blusherOptionsDiv.style.display = "none";
+            eyebrowOptionsDiv.style.display = "none";
+            eyelinerOptionsDiv.style.display = "none";
+        } else if (cosmeticTypeDropdown.value === "lip") {
+            skinOptionsDiv.style.display = "none";
+            lipOptionsDiv.style.display = "block";
+            blusherOptionsDiv.style.display = "none";
+            eyebrowOptionsDiv.style.display = "none";
+            eyelinerOptionsDiv.style.display = "none";
+        } else if (cosmeticTypeDropdown.value === "blusher") {
+            skinOptionsDiv.style.display = "none";
+            lipOptionsDiv.style.display = "none";
+            blusherOptionsDiv.style.display = "block";
+            eyebrowOptionsDiv.style.display = "none";
+            eyelinerOptionsDiv.style.display = "none";
+        } else if (cosmeticTypeDropdown.value === "eyebrow") {
+            skinOptionsDiv.style.display = "none";
+            lipOptionsDiv.style.display = "none";
+            blusherOptionsDiv.style.display = "none";
+            eyebrowOptionsDiv.style.display = "block";
+            eyelinerOptionsDiv.style.display = "none";
+        } else if (cosmeticTypeDropdown.value === "eyeliner") {
+            skinOptionsDiv.style.display = "none";
+            lipOptionsDiv.style.display = "none";
+            blusherOptionsDiv.style.display = "none";
+            eyebrowOptionsDiv.style.display = "none";
+            eyelinerOptionsDiv.style.display = "block";
+        } else {
+            skinOptionsDiv.style.display = "none";
+            lipOptionsDiv.style.display = "none";
+            blusherOptionsDiv.style.display = "none";
+            eyebrowOptionsDiv.style.display = "none";
+            eyelinerOptionsDiv.style.display = "none";
+        }
+    });
+
+    skinSelectButton.addEventListener("click", function () {
+        const skinColor = document.getElementById("skin-color").value;
+        const brightness = document.getElementById("brightness").value;
+        const texture = document.getElementById("texture").value;
+        displaySelectedDetails("피부", `${skinColor}, ${brightness}, ${texture}`);
+    });
+
+    lipSelectButton.addEventListener("click", function () {
+        const lipColor = document.getElementById("lip-color").value;
+        const texture = document.getElementById("lip-texture").value;
+        const pigmentation = document.getElementById("pigmentation").value;
+        const spreadability = document.getElementById("spreadability").value;
+        displaySelectedDetails("립", `${lipColor}, ${texture}, ${pigmentation}, ${spreadability}`);
+    });
+
+    blusherSelectButton.addEventListener("click", function () {
+        const color = document.getElementById("blusher-color").value;
+        const texture = document.getElementById("blusher-texture").value;
+        displaySelectedDetails("블러셔", color, texture);
+    });
+
+    eyebrowSelectButton.addEventListener("click", function () {
+        const color = document.getElementById("eyebrow-color").value;
+        const tool = document.getElementById("eyebrow-tool").value;
+        displaySelectedDetails("아이브로우", color, tool);
+    });
+
+    eyelinerSelectButton.addEventListener("click", function () {
+        const color = document.getElementById("eyeliner-color").value;
+        const tool = document.getElementById("eyeliner-tool").value;
+        displaySelectedDetails("아이라이너", color, tool);
+    });
+
+    function displaySelectedDetails(type, option1, option2) {
+        selectedDetailsDiv.style.display = "block";
+        const listItem = document.createElement("li");
+        listItem.textContent = `${type} - ${option1}, ${option2}`;
+        detailsList.appendChild(listItem);
+    }
+
+</script>
+</body>
+
+</html>
