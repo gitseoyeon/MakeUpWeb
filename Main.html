@@ -4,11 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>화장품 주문 제작</title>
+    <title>Main Page</title>
+    <link rel="stylesheet" href="Style.css">
 </head>
 
 <body>
-<h1>화장품 주문 제작</h1>
+<header>
+    <h1>Make Your Beauty</h1>
+
+    <div class="button-container">
+        <a href="main.html" class="navigation-button">메인 페이지로 이동</a>
+        <a href="shareThings.html" class="navigation-button">게시판 페이지로 이동</a>
+        <a href="mypage.html" class="navigation-button">마이페이지로 이동</a>
+    </div>
+</header>
 
 <label for="cosmetic-type">화장품 종류 선택:</label>
 <select id="cosmetic-type">
@@ -199,7 +208,7 @@
         const skinColor = document.getElementById("skin-color").value;
         const brightness = document.getElementById("brightness").value;
         const texture = document.getElementById("texture").value;
-        displaySelectedDetails("피부", `${skinColor}, ${brightness}, ${texture}`);
+        displaySelectedDetails("피부", skinColor, brightness, texture);
     });
 
     lipSelectButton.addEventListener("click", function () {
@@ -207,7 +216,7 @@
         const texture = document.getElementById("lip-texture").value;
         const pigmentation = document.getElementById("pigmentation").value;
         const spreadability = document.getElementById("spreadability").value;
-        displaySelectedDetails("립", `${lipColor}, ${texture}, ${pigmentation}, ${spreadability}`);
+        displaySelectedDetails("립", lipColor, texture, pigmentation, spreadability);
     });
 
     blusherSelectButton.addEventListener("click", function () {
@@ -228,14 +237,18 @@
         displaySelectedDetails("아이라이너", color, tool);
     });
 
-    function displaySelectedDetails(type, option1, option2) {
+    function displaySelectedDetails(type, option1, option2, option3, option4) {
         selectedDetailsDiv.style.display = "block";
         const listItem = document.createElement("li");
-        listItem.textContent = `${type} - ${option1}, ${option2}`;
+        listItem.textContent = `${type} - ${option1}, ${option2}, ${option3}, ${option4}`;
         detailsList.appendChild(listItem);
     }
 
 </script>
+
+<footer>
+    <p>tel: 02.0000.0000</p>
+</footer>
 </body>
 
 </html>

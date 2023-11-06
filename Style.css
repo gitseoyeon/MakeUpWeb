@@ -1,0 +1,88 @@
+/* header 스타일 */
+header {
+    background-color: #ffcccb; /* 헤더 배경색 */
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+}
+
+/* 헤더 내부 텍스트 스타일링 */
+header h1 {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #ff0066; /* 헤더 텍스트 색상 */
+}
+
+/* .button-container의 스타일 */
+.button-container {
+    display: flex; /* Flexbox 레이아웃 사용 */
+    justify-content: space-around; /* 각 요소 사이의 간격을 동일하게 분배하여 배치 */
+    margin-top: 10px; /* 버튼과 헤더 사이의 간격 조정 (선택사항) */
+}
+
+.post-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.post {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.post img {
+    max-width: 100%; /* 이미지의 최대 너비를 부모 요소인 .post의 너비에 맞춤 */
+    height: auto; /* 이미지의 높이를 자동으로 조절하여 가로세로 비율 유지 */
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.author-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+/* 페이지 이동 버튼 스타일링 */
+.navigation-button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 15px;
+    background-color: #ff0066; /* 버튼 배경색 */
+    color: #ffffff; /* 버튼 텍스트 색상 */
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+/* 마우스 호버 시 버튼 스타일 변경 */
+.navigation-button:hover {
+    background-color: #ff3366;
+}
+
+
+/* footer 스타일 */
+footer {
+    background-color: #ffcccb;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #ff0066;
+    font-size: 16px;
+}
