@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
+    <style>
+        /* 추가된 스타일: 스크롤을 위한 스타일 */
+        #saved-details {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
     <link rel="stylesheet" href="Style.css">
 </head>
 
@@ -32,8 +39,8 @@
 
 <div id="skin-options" style="display: none;">
     <h2>피부 종류 선택:</h2>
-    <label for="color">색깔:</label>
-    <select id="color">
+    <label for="skin-color">색깔:</label>
+    <select id="skin-color">
         <option value="pink">핑크</option>
         <option value="neutral">뉴트럴</option>
         <option value="yellow">옐로우</option>
@@ -148,102 +155,150 @@
     <button id="eyeliner-select-button">선택 완료</button>
 </div>
 
+<div id="selected-details" style="display: none;">
+    <h2>선택된 세부 정보:</h2>
+    <ul id="details-list"></ul>
+    <label for="quantity">개수:</label>
+    <input type="number" id="quantity" placeholder="개수를 입력하세요">
+    <button id="save-button">저장</button>
+</div>
+
+<div id="saved-details">
+    <h2>이전에 저장된 세부 정보:</h2>
+    <ul id="saved-details-list"></ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+
 <script>
     const cosmeticTypeDropdown = document.getElementById("cosmetic-type");
     const selectButton = document.getElementById("select-button");
-    const skinOptionsDiv = document.getElementById("skin-options")
-    const skinSelectButton = document.getElementById("skin-select-button");;
-    const lipOptionsDiv = document.getElementById("lip-options");
-    const lipSelectButton = document.getElementById("lip-select-button");
-    const blusherOptionsDiv = document.getElementById("blusher-options");
-    const blusherSelectButton = document.getElementById("blusher-select-button");
-    const eyebrowOptionsDiv = document.getElementById("eyebrow-options");
-    const eyebrowSelectButton = document.getElementById("eyebrow-select-button");
-    const eyelinerOptionsDiv = document.getElementById("eyeliner-options");
-    const eyelinerSelectButton = document.getElementById("eyeliner-select-button");
     const selectedDetailsDiv = document.getElementById("selected-details");
     const detailsList = document.getElementById("details-list");
+    const dynamicOptionsContainer = document.getElementById("dynamic-options-container");
+
+    const cosmeticTypes = ["skin", "lip", "blusher", "eyebrow", "eyeliner"];
 
     selectButton.addEventListener("click", function () {
-        if (cosmeticTypeDropdown.value === "skin") {
-            skinOptionsDiv.style.display = "block";
-            lipOptionsDiv.style.display = "none";
-            blusherOptionsDiv.style.display = "none";
-            eyebrowOptionsDiv.style.display = "none";
-            eyelinerOptionsDiv.style.display = "none";
-        } else if (cosmeticTypeDropdown.value === "lip") {
-            skinOptionsDiv.style.display = "none";
-            lipOptionsDiv.style.display = "block";
-            blusherOptionsDiv.style.display = "none";
-            eyebrowOptionsDiv.style.display = "none";
-            eyelinerOptionsDiv.style.display = "none";
-        } else if (cosmeticTypeDropdown.value === "blusher") {
-            skinOptionsDiv.style.display = "none";
-            lipOptionsDiv.style.display = "none";
-            blusherOptionsDiv.style.display = "block";
-            eyebrowOptionsDiv.style.display = "none";
-            eyelinerOptionsDiv.style.display = "none";
-        } else if (cosmeticTypeDropdown.value === "eyebrow") {
-            skinOptionsDiv.style.display = "none";
-            lipOptionsDiv.style.display = "none";
-            blusherOptionsDiv.style.display = "none";
-            eyebrowOptionsDiv.style.display = "block";
-            eyelinerOptionsDiv.style.display = "none";
-        } else if (cosmeticTypeDropdown.value === "eyeliner") {
-            skinOptionsDiv.style.display = "none";
-            lipOptionsDiv.style.display = "none";
-            blusherOptionsDiv.style.display = "none";
-            eyebrowOptionsDiv.style.display = "none";
-            eyelinerOptionsDiv.style.display = "block";
-        } else {
-            skinOptionsDiv.style.display = "none";
-            lipOptionsDiv.style.display = "none";
-            blusherOptionsDiv.style.display = "none";
-            eyebrowOptionsDiv.style.display = "none";
-            eyelinerOptionsDiv.style.display = "none";
-        }
+        const selectedType = cosmeticTypeDropdown.value;
+        displayOptions(selectedType);
     });
 
-    skinSelectButton.addEventListener("click", function () {
-        const skinColor = document.getElementById("skin-color").value;
-        const brightness = document.getElementById("brightness").value;
-        const texture = document.getElementById("texture").value;
-        displaySelectedDetails("피부", skinColor, brightness, texture);
-    });
+    function displayOptions(selectedType) {
+        // 세부 정보 목록 초기화
+        detailsList.innerHTML = "";
 
-    lipSelectButton.addEventListener("click", function () {
-        const lipColor = document.getElementById("lip-color").value;
-        const texture = document.getElementById("lip-texture").value;
-        const pigmentation = document.getElementById("pigmentation").value;
-        const spreadability = document.getElementById("spreadability").value;
-        displaySelectedDetails("립", lipColor, texture, pigmentation, spreadability);
-    });
+        // 선택된 화장품 유형 옵션 div 가져오기
+        const selectedOptionsDiv = document.getElementById(`${selectedType}-options`);
 
-    blusherSelectButton.addEventListener("click", function () {
-        const color = document.getElementById("blusher-color").value;
-        const texture = document.getElementById("blusher-texture").value;
-        displaySelectedDetails("블러셔", color, texture);
-    });
+        // 동적으로 생성된 옵션들을 표시
+        cosmeticTypes.forEach(type => {
+            const optionsDiv = document.getElementById(`${type}-options`);
+            if (type === selectedType) {
+                optionsDiv.style.display = "block";
+            } else {
+                optionsDiv.style.display = "none";
+            }
+        });
 
-    eyebrowSelectButton.addEventListener("click", function () {
-        const color = document.getElementById("eyebrow-color").value;
-        const tool = document.getElementById("eyebrow-tool").value;
-        displaySelectedDetails("아이브로우", color, tool);
-    });
+        // 해당 "선택" 버튼에 이벤트 리스너 추가
+        const selectButton = document.getElementById(`${selectedType}-select-button`);
+        selectButton.addEventListener("click", function () {
+            // 선택된 화장품 유형에 기반하여 값 동적으로 가져오기
+            const optionValues = getOptionValues(selectedType);
+            displaySelectedDetails(selectedType, ...optionValues);
+        });
+    }
 
-    eyelinerSelectButton.addEventListener("click", function () {
-        const color = document.getElementById("eyeliner-color").value;
-        const tool = document.getElementById("eyeliner-tool").value;
-        displaySelectedDetails("아이라이너", color, tool);
-    });
+    function getOptionValues(selectedType) {
+        const optionValues = [];
+        const options = document.querySelectorAll(`#${selectedType}-options select`);
+        options.forEach(option => {
+            optionValues.push(option.value);
+        });
+        return optionValues;
+    }
 
-    function displaySelectedDetails(type, option1, option2, option3, option4) {
+    function displaySelectedDetails(type, ...options) {
         selectedDetailsDiv.style.display = "block";
         const listItem = document.createElement("li");
-        listItem.textContent = `${type} - ${option1}, ${option2}, ${option3}, ${option4}`;
+        listItem.textContent = `${type} - ${options.join(", ")} `;
         detailsList.appendChild(listItem);
     }
 
+    const saveButton = document.getElementById("save-button");
+    saveButton.addEventListener("click", function () {
+        const selectedType = cosmeticTypeDropdown.value;
+        const optionValues = getOptionValues(selectedType);
+        const quantity = document.getElementById("quantity").value;
+        saveSelectedDetails(selectedType, optionValues, quantity);
+        displaySavedDetails();
+    });
+
+    function saveSelectedDetails(type, options, quantity) {
+        // 로컬 스토리지에서 저장된 데이터 불러오기
+        const savedDetails = JSON.parse(localStorage.getItem("savedDetails")) || {};
+
+        // 같은 화장품에 대한 세부 정보가 이미 있다면 배열에 추가
+        if (savedDetails[type]) {
+            savedDetails[type].push({ options, quantity });
+        } else {
+            // 없다면 새로운 배열로 저장
+            savedDetails[type] = [{ options, quantity }];
+        }
+
+        // 로컬 스토리지에 저장
+        localStorage.setItem("savedDetails", JSON.stringify(savedDetails));
+    }
+
+    function createDeleteButton(type, options) {
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "삭제";
+        deleteButton.addEventListener("click", function () {
+            deleteSavedDetails(type, options);
+            displaySavedDetails();
+        });
+        return deleteButton;
+    }
+
+    function deleteSavedDetails(type, options) {
+        // 로컬 스토리지에서 해당 세부 정보 삭제
+        const savedDetails = JSON.parse(localStorage.getItem("savedDetails")) || {};
+        delete savedDetails[type];
+        localStorage.setItem("savedDetails", JSON.stringify(savedDetails));
+    }
+
+    function displaySavedDetails() {
+        const savedDetailsList = document.getElementById("saved-details-list");
+        savedDetailsList.innerHTML = ""; // 기존 목록 초기화
+
+        // 로컬 스토리지에서 저장된 데이터 불러오기
+        const savedDetails = JSON.parse(localStorage.getItem("savedDetails")) || {};
+
+        // 저장된 세부 정보를 화면에 표시
+        for (const type in savedDetails) {
+            const detailsArray = savedDetails[type];
+
+            // 리스트에 저장된 개수만큼 아이템 생성
+            detailsArray.forEach(item => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `${type} - ${item.options.join(", ")} - 개수: ${item.quantity}`;
+                listItem.appendChild(createDeleteButton(type, item.options));
+                savedDetailsList.appendChild(listItem);
+            });
+        }
+    }
+
+    function getSelectedQuantity() {
+        return document.getElementById("quantity").value;
+    }
+
+
+    // 페이지 로드시 저장된 세부 정보 표시
+    displaySavedDetails();
 </script>
 
 <footer>
