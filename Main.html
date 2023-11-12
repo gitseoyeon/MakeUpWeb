@@ -26,152 +26,163 @@
     </div>
 </header>
 
-<label for="cosmetic-type">화장품 종류 선택:</label>
-<select id="cosmetic-type">
-    <option value="skin">피부</option>
-    <option value="lip">립</option>
-    <option value="blusher">블러셔</option>
-    <option value="eyebrow">아이브로우</option>
-    <option value="eyeliner">아이라이너</option>
-</select>
+<section class="main-container  ">
+    <div class="main-section">
 
-<button id="select-button">선택</button>
+        <label for="cosmetic-type">화장품 종류 선택:</label>
+            <select id="cosmetic-type">
+                <option value="skin">피부</option>
+                <option value="lip">립</option>
+                <option value="blusher">블러셔</option>
+                <option value="eyebrow">아이브로우</option>
+                <option value="eyeliner">아이라이너</option>
+            </select>
 
-<div id="skin-options" style="display: none;">
-    <h2>피부 종류 선택:</h2>
-    <label for="skin-color">색깔:</label>
-    <select id="skin-color">
-        <option value="pink">핑크</option>
-        <option value="neutral">뉴트럴</option>
-        <option value="yellow">옐로우</option>
-    </select>
+            <button id="select-button">선택</button>
+    </div>
+    <div class="main-section">
+        <div id="skin-options" style="display: none;">
+            <h2>피부 종류 선택:</h2>
+            <label for="skin-color">색깔:</label>
+            <select id="skin-color">
+                <option value="pink">핑크</option>
+                <option value="neutral">뉴트럴</option>
+                <option value="yellow">옐로우</option>
+            </select>
 
-    <label for="brightness">명도:</label>
-    <select id="brightness">
-        <option value="13">13</option>
-        <option value="17">17</option>
-        <option value="19">19</option>
-        <option value="21">21</option>
-        <option value="23">23</option>
-    </select>
+            <label for="brightness">명도:</label>
+            <select id="brightness">
+                <option value="13">13</option>
+                <option value="17">17</option>
+                <option value="19">19</option>
+                <option value="21">21</option>
+                <option value="23">23</option>
+            </select>
 
-    <label for="texture">텍스처:</label>
-    <select id="texture">
-        <option value="matte">매트</option>
-        <option value="semi-matte">세미 매트</option>
-        <option value="glow">글로우</option>
-    </select>
-    <button id="skin-select-button">선택 완료</button>
-</div>
+            <label for="texture">텍스처:</label>
+            <select id="texture">
+                <option value="matte">매트</option>
+                <option value="semi-matte">세미 매트</option>
+                <option value="glow">글로우</option>
+            </select>
+            <button id="skin-select-button">선택 완료</button>
+        </div>
 
-<div id="lip-options" style="display: none;">
-    <h2>립 종류 선택:</h2>
-    <label for="lip-color">색깔:</label>
-    <select id="lip-color">
-        <option value="pink">핑크</option>
-        <option value="red">레드</option>
-        <option value="orange">오렌지</option>
-        <option value="coral">코랄</option>
-    </select>
+        <div id="lip-options" style="display: none;">
+            <h2>립 종류 선택:</h2>
+            <label for="lip-color">색깔:</label>
+            <select id="lip-color">
+                <option value="pink">핑크</option>
+                <option value="red">레드</option>
+                <option value="orange">오렌지</option>
+                <option value="coral">코랄</option>
+            </select>
 
-    <label for="lip-texture">텍스처:</label>
-    <select id="lip-texture">
-        <option value="glow">글로우</option>
-        <option value="matte">매트</option>
-    </select>
+            <label for="lip-texture">텍스처:</label>
+            <select id="lip-texture">
+                <option value="glow">글로우</option>
+                <option value="matte">매트</option>
+            </select>
 
-    <label for="pigmentation">착색력:</label>
-    <select id="pigmentation">
-        <option value="strong">강</option>
-        <option value="medium">중</option>
-        <option value="weak">약</option>
-    </select>
+            <label for="pigmentation">착색력:</label>
+            <select id="pigmentation">
+                <option value="strong">강</option>
+                <option value="medium">중</option>
+                <option value="weak">약</option>
+            </select>
 
-    <label for="spreadability">발림성:</label>
-    <select id="spreadability">
-        <option value="watery">워터리</option>
-        <option value="oily">오일리</option>
-        <option value="solid">고체형</option>
-    </select>
-    <button id="lip-select-button">선택 완료</button>
-</div>
+            <label for="spreadability">발림성:</label>
+            <select id="spreadability">
+                <option value="watery">워터리</option>
+                <option value="oily">오일리</option>
+                <option value="solid">고체형</option>
+            </select>
+            <button id="lip-select-button">선택 완료</button>
+        </div>
 
-<div id="blusher-options" style="display: none;">
-    <h2>블러셔 종류 선택:</h2>
-    <label for="blusher-color">색깔:</label>
-    <select id="blusher-color">
-        <option value="pink">핑크</option>
-        <option value="coral">코랄</option>
-        <option value="orange">오랜지</option>
-        <option value="lavender">라벤더</option>
-        <option value="red">레드</option>
-    </select>
+        <div id="blusher-options" style="display: none;">
+            <h2>블러셔 종류 선택:</h2>
+            <label for="blusher-color">색깔:</label>
+            <select id="blusher-color">
+                <option value="pink">핑크</option>
+                <option value="coral">코랄</option>
+                <option value="orange">오랜지</option>
+                <option value="lavender">라벤더</option>
+                <option value="red">레드</option>
+            </select>
 
-    <label for="blusher-texture">텍스처:</label>
-    <select id="blusher-texture">
-        <option value="solid">고체형</option>
-        <option value="liquid">액체형</option>
-        <option value="powder">가루형</option>
-    </select>
-    <button id="blusher-select-button">선택 완료</button>
-</div>
+            <label for="blusher-texture">텍스처:</label>
+            <select id="blusher-texture">
+                <option value="solid">고체형</option>
+                <option value="liquid">액체형</option>
+                <option value="powder">가루형</option>
+            </select>
+            <button id="blusher-select-button">선택 완료</button>
+        </div>
 
-<div id="eyebrow-options" style="display: none;">
-    <h2>아이브로우 종류 선택:</h2>
-    <label for="eyebrow-color">색깔:</label>
-    <select id="eyebrow-color">
-        <option value="black">블랙</option>
-        <option value="ash">애쉬</option>
-        <option value="chocolate-brown">초코브라운</option>
-        <option value="dark-brown">다크브라운</option>
-        <option value="light-brown">라이트 브라운</option>
-        <option value="blonde">블론드</option>
-    </select>
+        <div id="eyebrow-options" style="display: none;">
+            <h2>아이브로우 종류 선택:</h2>
+            <label for="eyebrow-color">색깔:</label>
+            <select id="eyebrow-color">
+                <option value="black">블랙</option>
+                <option value="ash">애쉬</option>
+                <option value="chocolate-brown">초코브라운</option>
+                <option value="dark-brown">다크브라운</option>
+                <option value="light-brown">라이트 브라운</option>
+                <option value="blonde">블론드</option>
+            </select>
 
-    <label for="eyebrow-tool">툴:</label>
-    <select id="eyebrow-tool">
-        <option value="stick">스틱</option>
-        <option value="screw-brow">스크류 브로우</option>
-    </select>
-    <button id="eyebrow-select-button">선택 완료</button>
-</div>
+            <label for="eyebrow-tool">툴:</label>
+            <select id="eyebrow-tool">
+                <option value="stick">스틱</option>
+                <option value="screw-brow">스크류 브로우</option>
+            </select>
+            <button id="eyebrow-select-button">선택 완료</button>
+        </div>
 
-<div id="eyeliner-options" style="display: none;">
-    <h2>아이라이너 종류 선택:</h2>
-    <label for="eyeliner-color">색깔:</label>
-    <select id="eyeliner-color">
-        <option value="black">블랙</option>
-        <option value="dark-brown">다크 브라운</option>
-        <option value="chocolate-brown">초코 브라운</option>
-        <option value="light-brown">라이트 브라운</option>
-    </select>
+        <div id="eyeliner-options" style="display: none;">
+            <h2>아이라이너 종류 선택:</h2>
+            <label for="eyeliner-color">색깔:</label>
+            <select id="eyeliner-color">
+                <option value="black">블랙</option>
+                <option value="dark-brown">다크 브라운</option>
+                <option value="chocolate-brown">초코 브라운</option>
+                <option value="light-brown">라이트 브라운</option>
+            </select>
 
-    <label for="eyeliner-tool">툴:</label>
-    <select id="eyeliner-tool">
-        <option value="pencil">펜슬</option>
-        <option value="brush-pen">붓펜</option>
-        <option value="gel">젤</option>
-    </select>
-    <button id="eyeliner-select-button">선택 완료</button>
-</div>
+            <label for="eyeliner-tool">툴:</label>
+            <select id="eyeliner-tool">
+                <option value="pencil">펜슬</option>
+                <option value="brush-pen">붓펜</option>
+                <option value="gel">젤</option>
+            </select>
+            <button id="eyeliner-select-button">선택 완료</button>
+        </div>
+    </div>
 
-<div id="selected-details" style="display: none;">
-    <h2>선택된 세부 정보:</h2>
-    <ul id="details-list"></ul>
-    <label for="quantity">개수:</label>
-    <input type="number" id="quantity" placeholder="개수를 입력하세요">
-    <button id="save-button">저장</button>
-</div>
+    <div class="main-section">
+        <div id="selected-details" style="display: none;">
+            <h2>수량 선택</h2>
+            <ul id="details-list"></ul>
+            <label for="quantity">개수:</label>
+            <input type="number" id="quantity" placeholder="개수를 입력하세요">
+            <button id="save-button">저장</button>
+        </div>
+    </div>
 
-<div id="saved-details">
-    <h2>이전에 저장된 세부 정보:</h2>
-    <ul id="saved-details-list"></ul>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-</div>
+    <div class="main-section">
+        <div id="saved-details">
+            <h2>장바구니</h2>
+            <ul id="saved-details-list"></ul>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <a href="#" class="checkout-button" id="checkout-button">주문 하기</a>
+    </div>
+</section>
 
 <script>
     const cosmeticTypeDropdown = document.getElementById("cosmetic-type");
@@ -179,12 +190,29 @@
     const selectedDetailsDiv = document.getElementById("selected-details");
     const detailsList = document.getElementById("details-list");
     const dynamicOptionsContainer = document.getElementById("dynamic-options-container");
+    const checkoutButton = document.getElementById("checkout-button");
+    const mypageButton = document.getElementById("mypage-button");
 
     const cosmeticTypes = ["skin", "lip", "blusher", "eyebrow", "eyeliner"];
 
     selectButton.addEventListener("click", function () {
         const selectedType = cosmeticTypeDropdown.value;
         displayOptions(selectedType);
+    });
+
+    checkoutButton.addEventListener("click", function () {
+        const isConfirmed = confirm("주문을 확인하시겠습니까?");
+
+        if (isConfirmed) {
+            moveSessionDataToLocalStorage();
+
+            // 장바구니 비우기
+            clearSessionData();
+            window.location.href = "mypage.html";
+        } else {
+            // 사용자가 확인을 취소한 경우
+            alert("주문이 취소되었습니다.");
+        }
     });
 
     function displayOptions(selectedType) {
@@ -240,7 +268,7 @@
 
     function saveSelectedDetails(type, options, quantity) {
         // 로컬 스토리지에서 저장된 데이터 불러오기
-        const savedDetails = JSON.parse(localStorage.getItem("savedDetails")) || {};
+        const savedDetails = JSON.parse(sessionStorage.getItem("savedDetails")) || {};
 
         // 같은 화장품에 대한 세부 정보가 이미 있다면 배열에 추가
         if (savedDetails[type]) {
@@ -251,7 +279,7 @@
         }
 
         // 로컬 스토리지에 저장
-        localStorage.setItem("savedDetails", JSON.stringify(savedDetails));
+        sessionStorage.setItem("savedDetails", JSON.stringify(savedDetails));
     }
 
     function createDeleteButton(type, options) {
@@ -266,9 +294,9 @@
 
     function deleteSavedDetails(type, options) {
         // 로컬 스토리지에서 해당 세부 정보 삭제
-        const savedDetails = JSON.parse(localStorage.getItem("savedDetails")) || {};
+        const savedDetails = JSON.parse(sessionStorage.getItem("savedDetails")) || {};
         delete savedDetails[type];
-        localStorage.setItem("savedDetails", JSON.stringify(savedDetails));
+        sessionStorage.setItem("savedDetails", JSON.stringify(savedDetails));
     }
 
     function displaySavedDetails() {
@@ -276,7 +304,7 @@
         savedDetailsList.innerHTML = ""; // 기존 목록 초기화
 
         // 로컬 스토리지에서 저장된 데이터 불러오기
-        const savedDetails = JSON.parse(localStorage.getItem("savedDetails")) || {};
+        const savedDetails = JSON.parse(sessionStorage.getItem("savedDetails")) || {};
 
         // 저장된 세부 정보를 화면에 표시
         for (const type in savedDetails) {
@@ -297,6 +325,22 @@
     }
 
 
+    function moveSessionDataToLocalStorage() {
+        // 세션 스토리지의 값들을 로컬 스토리지에 저장하는 코드
+        const savedDetails = JSON.parse(sessionStorage.getItem("selectedDetails")) || {};
+        const orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
+
+        // 주문 내역에 추가
+        orderHistory.push(savedDetails);
+
+        // 로컬 스토리지에 저장
+        localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
+    }
+
+    function clearSessionData() {
+        // 세션 스토리지 비우기
+        sessionStorage.removeItem("selectedDetails");
+    }
     // 페이지 로드시 저장된 세부 정보 표시
     displaySavedDetails();
 </script>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ffcccb; /* 헤더 배경색 */
+            padding: 10px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #ff0066; /* 헤더 텍스트 색상 */
+        }
+
+        section {
+            margin: 20px;
+        }
+
+        .button-container {
+            display: flex; /* Flexbox 레이아웃 사용 */
+            justify-content: space-around; /* 각 요소 사이의 간격을 동일하게 분배하여 배치 */
+            margin-top: 10px; /* 버튼과 헤더 사이의 간격 조정 (선택사항) */
+        }
+
+        .navigation-button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 15px;
+            background-color: #ff0066; /* 버튼 배경색 */
+            color: #ffffff; /* 버튼 텍스트 색상 */
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        /* 마우스 호버 시 버튼 스타일 변경 */
+        .navigation-button:hover {
+            background-color: #ff3366;
+        }
+
+        .profile-container,
+        .order-history-container {
+            background-color: white;
+            padding: 20px;
+            margin-top: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .order-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Make Your Beauty</h1>
+
+    <div class="button-container">
+        <a href="main.html" class="navigation-button">메인 페이지로 이동</a>
+        <a href="shareThings.html" class="navigation-button">게시판 페이지로 이동</a>
+        <a href="mypage.html" class="navigation-button">마이페이지로 이동</a>
+    </div>
+</header>
+
+<section class="profile-container">
+    <h2>프로필 정보</h2>
+    <div class="profile-picture">
+        <img src="images/profile.png">
+    </div>
+    <div>
+        <p><strong>사용자 이름:</strong> 민서연</p>
+        <p><strong>연락처 정보:</strong> tjdus1111@naver.com</p>
+    </div>
+</section>
+
+<section class="order-history-container">
+    <h2>주문 및 구매 내역</h2>
+    <div id="order-history">
+        <!-- 주문 내역이 여기에 표시됨 -->
+    </div>
+</section>
+
+<script>
+    // 이전 코드 생략...
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // 페이지 로드 시 주문 내역 표시
+        displayOrderHistory();
+    });
+
+    function displayOrderHistory() {
+        const orderHistoryContainer = document.getElementById("order-history");
+        orderHistoryContainer.innerHTML = ""; // 기존 목록 초기화
+
+        // 로컬 스토리지에서 저장된 주문 내역 불러오기
+        const orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
+
+        // 주문 내역을 화면에 표시
+        orderHistory.forEach((order, index) => {
+            // 임의의 주문 번호, 일자, 상태 설정
+            const orderNumber = `#${index + 1}`;
+            const orderDate = "2023-01-01";
+            const orderStatus = "배송 완료";
+
+            // 주문 번호, 일자, 상태 표시
+            const orderInfo = document.createElement("p");
+            orderInfo.innerHTML = `<strong>주문 번호:</strong> ${orderNumber} | <strong>주문 일자:</strong> ${orderDate} | <strong>주문 상태:</strong> ${orderStatus}`;
+            orderHistoryContainer.appendChild(orderInfo);
+
+            // 주문 상품 및 수량 표시
+            const orderDetails = document.createElement("p");
+            orderDetails.innerHTML = `<strong>주문 상품 및 수량</strong> ${formatOrderDetails(order)}`;
+            orderHistoryContainer.appendChild(orderDetails);
+
+            // 주문 내역 간 줄 바꿈
+            const lineBreak = document.createElement("br");
+            orderHistoryContainer.appendChild(lineBreak);
+        });
+    }
+
+    function formatOrderDetails(order) {
+        let formattedDetails = "";
+
+        for (const type in order) {
+            const detailsArray = order[type];
+
+            detailsArray.forEach(item => {
+                formattedDetails += `${type} - ${item.options.join(", ")} - 개수: ${item.quantity}<br>`;
+            });
+        }
+
+        return formattedDetails;
+    }
+</script>
+
+
+
+</body>
+
+</html>

@@ -14,10 +14,21 @@ header h1 {
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-color: #f2f1f1;
+}
+
+section {
+    margin: 20px;
+}
+
+.main-section {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* .button-container의 스타일 */
@@ -74,6 +85,23 @@ body {
 /* 마우스 호버 시 버튼 스타일 변경 */
 .navigation-button:hover {
     background-color: #ff3366;
+}
+
+.checkout-button {
+    display: block;
+    margin-top: 10px;
+    padding: 5px 15px;
+    width: 10%;
+    background-color: #e9a2ff; /* 버튼 배경색 */
+    color: #ffffff; /* 버튼 텍스트 색상 */
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.checkout-button:hover {
+    background-color: #d352ff;
 }
 
 #saved-details {
