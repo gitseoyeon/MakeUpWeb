@@ -1,6 +1,24 @@
 {
-  "name": "MakeUpWeb",
+  "name": "makeupweb",
   "version": "1.0.0",
   "dependencies": {
-  }
+    "openai": "^4.17.5"
+  },
+  "main": "shareThings.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitseoyeon/MakeUpWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gitseoyeon/MakeUpWeb/issues"
+  },
+  "homepage": "https://github.com/gitseoyeon/MakeUpWeb#readme",
+  "description": ""
 }
