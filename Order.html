@@ -20,16 +20,18 @@
     <h1>Make Your Beauty</h1>
 
     <div class="button-container">
-        <a href="main.html" class="navigation-button">메인 페이지로 이동</a>
-        <a href="shareThings.html" class="navigation-button">게시판 페이지로 이동</a>
-        <a href="mypage.html" class="navigation-button">마이페이지로 이동</a>
+        <a href="AIPage.html" class="navigation-button">AI Recommend</a>
+        <a href="Order.html" class="navigation-button">Order</a>
+        <a href="shareThings.html" class="navigation-button">Community</a>
+        <a href="mypage.html" class="navigation-button">MyPage</a>
+
     </div>
 </header>
 
 <section class="main-container  ">
     <div class="main-section">
 
-        <label for="cosmetic-type">화장품 종류 선택:</label>
+        <label for="cosmetic-type"><img src="images/Lipstick.png" width="20">화장품 종류 선택:</label>
             <select id="cosmetic-type">
                 <option value="skin">피부</option>
                 <option value="lip">립</option>
@@ -38,7 +40,7 @@
                 <option value="eyeliner">아이라이너</option>
             </select>
 
-            <button id="select-button">선택</button>
+            <button id="select-button" >선택</button>
     </div>
     <div class="main-section">
         <div id="skin-options" style="display: none;">
@@ -262,23 +264,24 @@
         const selectedType = cosmeticTypeDropdown.value;
         const optionValues = getOptionValues(selectedType);
         const quantity = document.getElementById("quantity").value;
-        saveSelectedDetails(selectedType, optionValues, quantity);
+        const date = new Date();
+        saveSelectedDetails(selectedType, optionValues, quantity, date);
         displaySavedDetails();
     });
 
-    function saveSelectedDetails(type, options, quantity) {
-        // 로컬 스토리지에서 저장된 데이터 불러오기
+    function saveSelectedDetails(type, options, quantity, date) {
+        // 세션 스토리지에서 저장된 데이터 불러오기
         const savedDetails = JSON.parse(sessionStorage.getItem("savedDetails")) || {};
 
         // 같은 화장품에 대한 세부 정보가 이미 있다면 배열에 추가
         if (savedDetails[type]) {
-            savedDetails[type].push({ options, quantity });
+            savedDetails[type].push({ options, quantity, date });
         } else {
             // 없다면 새로운 배열로 저장
-            savedDetails[type] = [{ options, quantity }];
+            savedDetails[type] = [{ options, quantity,date }];
         }
 
-        // 로컬 스토리지에 저장
+        // 세션 스토리지에 저장
         sessionStorage.setItem("savedDetails", JSON.stringify(savedDetails));
     }
 
@@ -303,7 +306,7 @@
         const savedDetailsList = document.getElementById("saved-details-list");
         savedDetailsList.innerHTML = ""; // 기존 목록 초기화
 
-        // 로컬 스토리지에서 저장된 데이터 불러오기
+        // 세션 스토리지에서 저장된 데이터 불러오기
         const savedDetails = JSON.parse(sessionStorage.getItem("savedDetails")) || {};
 
         // 저장된 세부 정보를 화면에 표시
@@ -327,7 +330,7 @@
 
     function moveSessionDataToLocalStorage() {
         // 세션 스토리지의 값들을 로컬 스토리지에 저장하는 코드
-        const savedDetails = JSON.parse(sessionStorage.getItem("selectedDetails")) || {};
+        const savedDetails = JSON.parse(sessionStorage.getItem("savedDetails")) || {};
         const orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
 
         // 주문 내역에 추가
@@ -339,15 +342,12 @@
 
     function clearSessionData() {
         // 세션 스토리지 비우기
-        sessionStorage.removeItem("selectedDetails");
+        sessionStorage.removeItem("savedDetails");
     }
     // 페이지 로드시 저장된 세부 정보 표시
     displaySavedDetails();
 </script>
 
-<footer>
-    <p>tel: 02.0000.0000</p>
-</footer>
 </body>
 
 </html>

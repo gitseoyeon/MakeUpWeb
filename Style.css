@@ -1,9 +1,12 @@
 /* header 스타일 */
 header {
-    background-color: #ffcccb; /* 헤더 배경색 */
     padding: 10px;
     text-align: center;
     font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ffe3e3;
 }
 
 /* 헤더 내부 텍스트 스타일링 */
@@ -11,13 +14,16 @@ header h1 {
     margin: 0;
     font-family: 'Arial', sans-serif;
     color: #ff0066; /* 헤더 텍스트 색상 */
+    background: linear-gradient(to right top, #861657, #ffa69e);
+    color: transparent;
+    -webkit-background-clip: text;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f5f5f5;
 }
 
 section {
@@ -36,6 +42,8 @@ section {
     display: flex; /* Flexbox 레이아웃 사용 */
     justify-content: space-around; /* 각 요소 사이의 간격을 동일하게 분배하여 배치 */
     margin-top: 10px; /* 버튼과 헤더 사이의 간격 조정 (선택사항) */
+    margin-left: 0px;
+    margin-right:0px
 }
 
 .post-container {
@@ -75,7 +83,7 @@ section {
     display: block;
     margin: 10px auto;
     padding: 10px 15px;
-    background-color: #ff0066; /* 버튼 배경색 */
+    background-color: #e7abc3; /* 버튼 배경색 */
     color: #ffffff; /* 버튼 텍스트 색상 */
     text-decoration: none;
     border-radius: 5px;
@@ -84,7 +92,7 @@ section {
 
 /* 마우스 호버 시 버튼 스타일 변경 */
 .navigation-button:hover {
-    background-color: #ff3366;
+    background-color: #9f5465;
 }
 
 .checkout-button {
@@ -104,25 +112,16 @@ section {
     background-color: #d352ff;
 }
 
+.button {
+    background-color: #e7abc3;
+    color: #fff;
+    border-radius:10px;
+}
+
 #saved-details {
     max-height: 300px;
     overflow-y: auto;
 }
 
 
-/* footer 스타일 */
-footer {
-    background-color: #ffcccb;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
 
-footer p {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    color: #ff0066;
-    font-size: 16px;
-}

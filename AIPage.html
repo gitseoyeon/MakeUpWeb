@@ -33,31 +33,83 @@
             left: 43%;
             z-index: 101;
         }
+
+        /* Result box */
+        #result-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        #chat-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-line;
+        }
+
+        .user-message {
+            background-color: #d3e0f8;
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .assistant-message {
+            background-color: #f0f0f0;
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+
     </style>
+    <link rel="stylesheet" href="Style.css">
 </head>
 
 <body>
-<h1>chatGPT API</h1>
-<div>무엇이든 질문해보세요 !!</div>
+<header>
+    <h1>Make Your Beauty</h1>
 
-<label for="cosmeticType">추천받고 싶은 화장품 종류는</label>
-<input type="text" id="cosmeticType" required />
+    <div class="button-container">
+        <a href="AIPage.html" class="navigation-button">AI Recommend</a>
+        <a href="Order.html" class="navigation-button">Order</a>
+        <a href="shareThings.html" class="navigation-button">Community</a>
+        <a href="mypage.html" class="navigation-button">MyPage</a>
+    </div>
+</header>
+<section class="main-section">
+    <h1><img src="images/Robot.png" width="25"> 화장품 추천해드립니다! <img src="images/Robot.png" width="25"></h1>
 
-<label for="favoriteColor">내가 선호하는 컬러는</label>
-<input type="text" id="favoriteColor" required />
+    <label for="cosmeticType">추천받고 싶은 화장품 종류는</label>
+    <input type="text" id="cosmeticType" required />
+    <br>
 
-<label for="dislikedColor">내가 비선호하는 컬러는</label>
-<input type="text" id="dislikedColor" required />
+    <label for="favoriteColor">내가 선호하는 컬러는</label>
+    <input type="text" id="favoriteColor" required />
+    <br>
 
-<label for="favoriteTexture">내가 좋아하는 텍스쳐는</label>
-<input type="text" id="favoriteTexture" required />
+    <label for="dislikedColor">내가 비선호하는 컬러는</label>
+    <input type="text" id="dislikedColor" required />
+    <br>
 
-<button onclick="chatGPT()">입력</button>
-<div id="result"></div>
+    <label for="favoriteTexture">내가 좋아하는 텍스쳐는</label>
+    <input type="text" id="favoriteTexture" required />
 
-<div id="loading">
-    <img src="https://studentrights.sen.go.kr/images/common/loading.gif">
-</div>
+    <button onclick="chatGPT()">입력</button>
+    <div id="chat-box"></div>
+
+    <div id="loading">
+        <img src="https://studentrights.sen.go.kr/images/common/loading.gif">
+    </div>
+</section>
+
 <script>
     $(document).ready(function () {
         $('#loading').hide();
@@ -77,7 +129,7 @@
                 role: 'user',
                 content: `화장품을 추천받고 싶어. 추천받고 싶은 화장품 종류는 ${cosmeticType} 야.
                                 내가 선호하는 컬러는 ${favoriteColor}고, 비선호하는 컬러는 ${dislikedColor}야.
-                                ${favoriteTexture} 같은 텍스쳐였으면 좋겠어. 몇 개 추천해줄 수 있니?`
+                                ${favoriteTexture} 같은 텍스쳐였으면 좋겠어. 몇 개 추천해줘 `
             },
         ];
 
@@ -99,10 +151,25 @@
         }).then(function (response) {
             $('#loading').hide();
             console.log(response);
-            let result = document.getElementById('result');
-            let pre = document.createElement('pre');
-            pre.innerHTML = "\n\n" + response.choices[0].message.content;
-            result.appendChild(pre);
+            let chatBox = document.getElementById('chat-box');
+
+            // Display user message
+            let userMessage = document.createElement('div');
+            userMessage.className = 'user-message';
+            userMessage.innerHTML = cosmeticType + ', ' + favoriteColor + ', ' + dislikedColor + ', ' + favoriteTexture;
+            chatBox.appendChild(userMessage);
+
+            // Display assistant message
+            let assistantMessage = document.createElement('div');
+            assistantMessage.className = 'assistant-message';
+            assistantMessage.innerHTML = response.choices[0].message.content;
+            chatBox.appendChild(assistantMessage);
+
+            // Clear input fields
+            document.getElementById('cosmeticType').value = '';
+            document.getElementById('favoriteColor').value = '';
+            document.getElementById('dislikedColor').value = '';
+            document.getElementById('favoriteTexture').value = '';
         });
     }
 </script>

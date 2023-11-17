@@ -38,5 +38,5 @@ function createPost(authorName, profileImageUrl, title, content, imageUrl) {
 
 // 예시 게시물 추가
 createPost("관리자", "images/userImage.png", "나만의 뷰티템을 갖고싶다면?!", "Make Your Beauty를 이용해보세요! 당신의 아름다움을 책임집니다!", "images/image1.png");
-createPost("토끼끼", "images/userImage2.png", "안녕하세요~ 처음 글 써봅니다!", "화알못이라서 많이 부족하지만 배워가겠습니다~");
-createPost("코덕", "images/userImage3.png", "제 뷰티템 소개할게요!", "example3.jpg");
+createPost("토끼끼", "images/userImage2.png", "안녕하세요~ 처음 글 써봅니다!", "화알못이라서 많이 부족하지만 배워가겠습니다~", "images/img2.png");
+createPost("코덕", "images/userImage3.png", "제 뷰티템 소개할게요!","루즈 디올 사틴 피니쉬 추천합니다!", "images/dior.png");
